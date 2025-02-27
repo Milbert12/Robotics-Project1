@@ -1,0 +1,30 @@
+<mujoco>
+<option gravity="0 0 0"/>
+	<worldbody>
+    <light diffuse=".5 .5 .5" pos="0 0 3" dir="0 0 -1"/>
+	<geom type="plane" size="2.5 2.5 0.5" rgba=".9 .9 .9 1"/>
+		<body name="body1" pos="0 0 0">
+		<inertial mass="1" pos="0 0 0.25" fullinertia="1 1 0.1 0 0 0"/>
+		<joint name="joint1" type="hinge" axis="0 0 1" pos="0 0 0"/>
+		<geom type="cylinder" size=".05 0.5" pos="0 0 0.5" rgba="0.9 0 0 0.7"/>
+			<body name="body2" pos="0 0 1.0" xyaxes="1 0 0 0 0 1">
+			<inertial mass="1" pos="0 0 0" fullinertia="1 1 0.1 0 0 0"/>
+			<joint name="joint2" type="hinge" axis="0 0 1" pos="0 0 0"/>
+			<geom type="cylinder" size=".05 0.4" pos="0 0 0.4" rgba="0 0.9 0 0.7"/>
+				<body name="body3" pos="0 0 0.8" xyaxes="1 0 0 0 0 1">
+				<inertial mass="1" pos="0 0 0" fullinertia="1 1 0.1 0 0 0"/>
+				<geom type="cylinder" size=".05 0.4" pos="0 0 0.4" rgba="0 0.9 0 .7"/>
+					<body name="body4" pos="0 0 0.8" xyaxes="0 -1 0 1 0 0">
+					<site name="tip" pos="0 0 0" rgba="0.9 0.9 0.9 1" size="0.05"/>
+					</body>
+				</body>
+			</body>
+		</body>
+	</worldbody>
+	<keyframe>
+	<key name="home" qpos="1.5707 0"/>
+	</keyframe>
+</mujoco>
+
+
+			
