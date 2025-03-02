@@ -4,7 +4,7 @@
     <light diffuse=".5 .5 .5" pos="0 0 3" dir="0 0 -1"/>
 	<geom type="plane" size="2.5 2.5 0.1" rgba=".9 .9 .9 1" pos="0 0 0"/>
 		<body name="body0" pos="0 0 0">
-		<inertial mass="1" pos="0 0 0.25" fullinertia="1 1 0.1 0 0 0"/>
+		<inertial mass="1" pos="0 0 0" fullinertia="1 1 0.1 0 0 0"/>
 		<joint name="joint1" type="hinge" axis="0 0 1" pos="0 0 0"/>
 		<geom type="cylinder" size=".15 0.6" pos="0 0 0.6" rgba="0.9 0 0 0.7"/>
 			<body name="body1" pos="0 0 1.2" xyaxes="1 0 0 0 0 1">

@@ -51,7 +51,7 @@ while ((time.time() - start_time) < sim_time):
     b3_spatial_ang = np.append(b3_spatial_ang, twists[1][3:6])
     b1_spatial_ang = np.append(b1_spatial_ang, twists[4][3:6])
     
-    time_until_next_step = model.opt.timestep - (time.time() - step_start) #this limits the while loop to only run every 0.02seconds
+    time_until_next_step = model.opt.timestep - (time.time() - step_start) #this limits the while loop to only run every 0.002seconds
     if time_until_next_step > 0:
       time.sleep(time_until_next_step)
 

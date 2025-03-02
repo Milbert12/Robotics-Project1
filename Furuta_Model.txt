@@ -68,7 +68,7 @@ totalmass             3
 STATISTIC
   meaninertia         1.5     
   meanmass            0.75    
-  meansize            0.65    
+  meansize            0.71    
   extent              2       
   center              0       -0.29     0.61    
 
@@ -122,10 +122,10 @@ BODY 1:
   body_geomnum          1 
   body_geomadr          1 
   body_simple           0 
-  body_sameframe        3 
+  body_sameframe        1 
   body_pos              0         0         0        
   body_quat             1         0         0         0        
-  body_ipos             0         0         0.25     
+  body_ipos             0         0         0        
   body_iquat            1         0         0         0        
   body_mass             1        
   body_subtreemass      3        
@@ -460,7 +460,7 @@ LIGHT 0:
   light_active          1 
   light_pos             0         0         3        
   light_dir             0         0        -1        
-  light_poscom0         0         0.27      2.1      
+  light_poscom0         0         0.27      2.2      
   light_pos0            0         0         3        
   light_dir0            0         0        -1        
   light_attenuation     1         0         0        
