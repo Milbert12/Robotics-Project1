@@ -1,6 +1,4 @@
-import matplotlib
 import numpy as np
-
 import mujoco as mj
 import mujoco.viewer
 import os
@@ -133,10 +131,7 @@ data.qvel[:] = np.array([dtheta1, dtheta2])
 
 mj.mj_forward(model, data)
 
-
-
-
-twists_2AB = np.array(np.reshape(data.sensordata.copy(), (4,6))).round(4)
+twists_2AB = np.array(np.reshape(data.sensordata.copy(), (-1,6))).round(4)
 
 print("\n Problem 2A verification with Mujoco")                 #SPATIAL LINEAR VELOCITIES DO NOT MATCH PROBLEM 2 FOR ALL VERIFICATIONS
 print("*************************************************")
@@ -161,7 +156,7 @@ data.qpos[:] = np.array([theta1, theta2])
 data.qvel[:] = np.array([dtheta1_2c, dtheta2_2c])
 mj.mj_forward(model, data)
 
-twists_2C = np.array(np.reshape(data.sensordata.copy(), (4,6))).round(4)
+twists_2C = np.array(np.reshape(data.sensordata.copy(), (-1,6))).round(4)
 
 print("\n Problem 2C verification with Mujoco")
 print("*************************************************")
@@ -176,7 +171,7 @@ data.qpos[:] = np.array([theta1, theta2])
 data.qvel[:] = np.array([dtheta1_2d, dtheta2_2d])
 mj.mj_forward(model, data)
 
-twists_2D = np.array(np.reshape(data.sensordata.copy(), (4,6))).round(4)
+twists_2D = np.array(np.reshape(data.sensordata.copy(), (-1,6))).round(4)
 
 print("\n Problem 2D verification with Mujoco")
 print("*************************************************")

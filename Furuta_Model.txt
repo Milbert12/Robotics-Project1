@@ -2,33 +2,35 @@ MuJoCo version 3.2.7
 model name     MuJoCo Model
 
 MEMORY
-  total           6.3 KB
+  total           7.0 KB
 
 SIZES
   nq                  2
   nv                  2
+  nu                  1
   nbody               5
   nbvh                4
   nbvhstatic          4
   njnt                2
   ngeom               4
-  nsite               2
+  nsite               3
   nlight              1
-  nsensor             8
+  nsensor             10
   nkey                1
-  nnames              175
+  nnames              223
   npaths              1
-  nnames_map          46
+  nnames_map          54
   nM                  3
   nB                  10
   nC                  3
   nD                  4
+  nJmom               1
   ntree               1
   njmax               -1
   nconmax             -1
-  nsensordata         24
+  nsensordata         30
   narena              13631488
-  nbuffer             10689
+  nbuffer             12993
 
 OPTION
   timestep            0.002   
@@ -41,7 +43,7 @@ OPTION
   density             0       
   viscosity           0       
   o_margin            0       
-  integrator          0
+  integrator          1
   cone                0
   jacobian            2
   solver              2
@@ -54,7 +56,7 @@ OPTION
   disableactuator     0
   sdf_initpoints      40
   sdf_iterations      10
-  gravity             0         0         0        
+  gravity             0         0        -9.8      
   wind                0         0         0        
   magnetic            0        -0.5       0        
   o_solref            0.02      1        
@@ -66,9 +68,9 @@ totalmass             3
 STATISTIC
   meaninertia         1.5     
   meanmass            0.75    
-  meansize            0.64    
+  meansize            0.65    
   extent              2       
-  center              0       -0.3      0.6     
+  center              0       -0.29     0.61    
 
 qpos0                 0         0        
 
@@ -344,9 +346,9 @@ GEOM 1:
   geom_solmix           1        
   geom_solref           0.02      1        
   geom_solimp           0.9       0.95      0.001     0.5       2        
-  geom_size             0.05      0.6       0        
-  geom_aabb             0         0         0         0.05      0.05      0.6      
-  geom_rbound           0.6      
+  geom_size             0.15      0.6       0        
+  geom_aabb             0         0         0         0.15      0.15      0.6      
+  geom_rbound           0.62     
   geom_pos              0         0         0.6      
   geom_quat             1         0         0         0        
   geom_friction         1         0.005     0.0001   
@@ -371,9 +373,9 @@ GEOM 2:
   geom_solmix           1        
   geom_solref           0.02      1        
   geom_solimp           0.9       0.95      0.001     0.5       2        
-  geom_size             0.05      0.4       0        
-  geom_aabb             0         0         0         0.05      0.05      0.4      
-  geom_rbound           0.4      
+  geom_size             0.1       0.4       0        
+  geom_aabb             0         0         0         0.1       0.1       0.4      
+  geom_rbound           0.41     
   geom_pos              0         0         0.4      
   geom_quat             1         0         0         0        
   geom_friction         1         0.005     0.0001   
@@ -398,9 +400,9 @@ GEOM 3:
   geom_solmix           1        
   geom_solref           0.02      1        
   geom_solimp           0.9       0.95      0.001     0.5       2        
-  geom_size             0.05      0.4       0        
-  geom_aabb             0         0         0         0.05      0.05      0.4      
-  geom_rbound           0.4      
+  geom_size             0.075     0.4       0        
+  geom_aabb             0         0         0         0.075     0.075     0.4      
+  geom_rbound           0.41     
   geom_pos              0         0         0.4      
   geom_quat             1         0         0         0        
   geom_friction         1         0.005     0.0001   
@@ -411,6 +413,18 @@ GEOM 3:
 
 
 SITE 0:
+  name                  body1sensor
+  site_type             2 
+  site_bodyid           2 
+  site_matid            -1 
+  site_group            0 
+  site_sameframe        1 
+  site_size             0.0005    0.0005    0.0005   
+  site_pos              0         0         0        
+  site_quat             1         0         0         0        
+  site_rgba             1         0         0         1        
+
+SITE 1:
   name                  body2sensor
   site_type             2 
   site_bodyid           3 
@@ -422,7 +436,7 @@ SITE 0:
   site_quat             1         0         0         0        
   site_rgba             1         0         0         1        
 
-SITE 1:
+SITE 2:
   name                  body3sensor
   site_type             2 
   site_bodyid           4 
@@ -457,13 +471,41 @@ LIGHT 0:
   light_specular        0.3       0.3       0.3      
 
 
+ACTUATOR 0:
+  name                  joint1motor
+  actuator_trntype      0 
+  actuator_dyntype      0 
+  actuator_gaintype     0 
+  actuator_biastype     0 
+  actuator_trnid        0  -1 
+  actuator_actadr       -1 
+  actuator_actnum       0 
+  actuator_group        0 
+  actuator_ctrllimited  0 
+  actuator_forcelimited 0 
+  actuator_actlimited   0 
+  actuator_dynprm       1         0         0         0         0         0         0         0         0         0        
+  actuator_gainprm      1         0         0         0         0         0         0         0         0         0        
+  actuator_biasprm      0         0         0         0         0         0         0         0         0         0        
+  actuator_actearly     0 
+  actuator_ctrlrange    0         0        
+  actuator_forcerange   0         0        
+  actuator_actrange     0         0        
+  actuator_gear         1         0         0         0         0         0        
+  actuator_cranklength  0        
+  actuator_acc0         0.54     
+  actuator_length0      0        
+  actuator_lengthrange  0         0        
+  actuator_plugin       -1 
+
+
 SENSOR 0:
   name                  body3vel
   sensor_type           2 
   sensor_datatype       0 
   sensor_needstage      2 
   sensor_objtype        6 
-  sensor_objid          1 
+  sensor_objid          2 
   sensor_reftype        0 
   sensor_refid          -1 
   sensor_dim            3 
@@ -478,7 +520,7 @@ SENSOR 1:
   sensor_datatype       0 
   sensor_needstage      2 
   sensor_objtype        6 
-  sensor_objid          1 
+  sensor_objid          2 
   sensor_reftype        0 
   sensor_refid          -1 
   sensor_dim            3 
@@ -493,9 +535,9 @@ SENSOR 2:
   sensor_datatype       0 
   sensor_needstage      2 
   sensor_objtype        6 
-  sensor_objid          1 
-  sensor_reftype        1 
-  sensor_refid          0 
+  sensor_objid          2 
+  sensor_reftype        0 
+  sensor_refid          -1 
   sensor_dim            3 
   sensor_adr            6 
   sensor_cutoff         0        
@@ -508,9 +550,9 @@ SENSOR 3:
   sensor_datatype       0 
   sensor_needstage      2 
   sensor_objtype        6 
-  sensor_objid          1 
-  sensor_reftype        1 
-  sensor_refid          0 
+  sensor_objid          2 
+  sensor_reftype        0 
+  sensor_refid          -1 
   sensor_dim            3 
   sensor_adr            9 
   sensor_cutoff         0        
@@ -523,7 +565,7 @@ SENSOR 4:
   sensor_datatype       0 
   sensor_needstage      2 
   sensor_objtype        6 
-  sensor_objid          0 
+  sensor_objid          1 
   sensor_reftype        0 
   sensor_refid          -1 
   sensor_dim            3 
@@ -538,7 +580,7 @@ SENSOR 5:
   sensor_datatype       0 
   sensor_needstage      2 
   sensor_objtype        6 
-  sensor_objid          0 
+  sensor_objid          1 
   sensor_reftype        0 
   sensor_refid          -1 
   sensor_dim            3 
@@ -553,9 +595,9 @@ SENSOR 6:
   sensor_datatype       0 
   sensor_needstage      2 
   sensor_objtype        6 
-  sensor_objid          0 
-  sensor_reftype        1 
-  sensor_refid          0 
+  sensor_objid          1 
+  sensor_reftype        0 
+  sensor_refid          -1 
   sensor_dim            3 
   sensor_adr            18 
   sensor_cutoff         0        
@@ -568,11 +610,41 @@ SENSOR 7:
   sensor_datatype       0 
   sensor_needstage      2 
   sensor_objtype        6 
-  sensor_objid          0 
-  sensor_reftype        1 
-  sensor_refid          0 
+  sensor_objid          1 
+  sensor_reftype        0 
+  sensor_refid          -1 
   sensor_dim            3 
   sensor_adr            21 
+  sensor_cutoff         0        
+  sensor_noise          0        
+  sensor_plugin         -1 
+
+SENSOR 8:
+  name                  spatial1vel
+  sensor_type           30 
+  sensor_datatype       0 
+  sensor_needstage      2 
+  sensor_objtype        6 
+  sensor_objid          0 
+  sensor_reftype        0 
+  sensor_refid          -1 
+  sensor_dim            3 
+  sensor_adr            24 
+  sensor_cutoff         0        
+  sensor_noise          0        
+  sensor_plugin         -1 
+
+SENSOR 9:
+  name                  spatial1ang
+  sensor_type           31 
+  sensor_datatype       0 
+  sensor_needstage      2 
+  sensor_objtype        6 
+  sensor_objid          0 
+  sensor_reftype        0 
+  sensor_refid          -1 
+  sensor_dim            3 
+  sensor_adr            27 
   sensor_cutoff         0        
   sensor_noise          0        
   sensor_plugin         -1 
