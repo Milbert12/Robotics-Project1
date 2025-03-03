@@ -3,6 +3,7 @@ import mujoco as mj
 import mujoco.viewer
 import os
 from math import pi
+from spatialmath.base import skew, tr2angvec
 
 xml_path = "Furuta_Model.xml"
 dirname = os.path.dirname(__file__)
@@ -37,7 +38,8 @@ print("Position Vector")
 print(data.xpos[body3_id])
 
 print("\n Rotation Matrix")
-print(np.reshape(data.xmat[body3_id], (3,3)).round(4))
+rot_1a = np.reshape(data.xmat[body3_id], (3,3)).round(4)
+print(rot_1a)
 
 print("\n Quaternion")
 print(data.xquat[body3_id])
@@ -52,10 +54,22 @@ print("Position Vector")
 print(data.xpos[body2_id])
 
 print("\n Rotation Matrix")
-print(np.reshape(data.xmat[body2_id], (3,3)).round(4))
+rot_1b = np.reshape(data.xmat[body2_id], (3,3)).round(4)
+print(rot_1b)
 
 print("\n Quaternion")
 print(data.xquat[body2_id])
+
+#******1C Verification******
+print("\n Problem 1C part A verification with Mujoco")
+print("*************************************************")
+print("Axis Angle Representation of part A (angle, vector)")
+print(tr2angvec(rot_1a))
+
+print("\n Problem 1C part B verification with Mujoco")
+print("*************************************************")
+print("Axis Angle Representation of part B (angle, vector)")
+print(tr2angvec(rot_1b))
 
 #******1D Verification******
 #Solution 1
@@ -138,14 +152,27 @@ print("*************************************************")
 print("End Effector Body Twist (v,omega)")
 print(twists_2AB[0])
 print("\nEnd Effector Spatial Twist (v,omega)")
-print(twists_2AB[1])
+#Spatial twist = -omega @ xpos + framelinvel
+spatial_omega_2A = twists_2AB[1][3:6]
+skew_spatial_omega_2A =skew(spatial_omega_2A)
+xpos_2A = data.xpos[body3_id]
+framelinvel_2A = twists_2AB[1][0:3]
+spatial_linvel_2A = -(skew_spatial_omega_2A @ xpos_2A) + framelinvel_2A
+
+print(np.append(spatial_linvel_2A, spatial_omega_2A).round(4))
 
 print("\n Problem 2B verification with Mujoco")
 print("*************************************************")
 print("Frame 2 Body Twist (v,omega)")
 print(twists_2AB[2])
 print("\nFrame 2 Spatial Twist (v,omega)")
-print(twists_2AB[3])
+spatial_omega_2B = twists_2AB[3][3:6]
+skew_spatial_omega_2B =skew(spatial_omega_2B)
+xpos_2B = data.xpos[body2_id]
+framelinvel_2B = twists_2AB[3][0:3]
+spatial_linvel_2B = -(skew_spatial_omega_2B @ xpos_2B) + framelinvel_2B
+
+print(np.append(spatial_linvel_2B, spatial_omega_2B).round(4))
 
 
 #******2C Verification******
@@ -176,4 +203,10 @@ twists_2D = np.array(np.reshape(data.sensordata.copy(), (-1,6))).round(4)
 print("\n Problem 2D verification with Mujoco")
 print("*************************************************")
 print("End Effector Spatial Twist (v,omega)")
-print(twists_2D[1])
+spatial_omega_2D = twists_2D[1][3:6]
+skew_spatial_omega_2D =skew(spatial_omega_2D)
+xpos_2D = data.xpos[body3_id]
+framelinvel_2D = twists_2D[1][0:3]
+spatial_linvel_2D = -(skew_spatial_omega_2D @ xpos_2D) + framelinvel_2D
+
+print(np.append(spatial_linvel_2D, spatial_omega_2D).round(4))

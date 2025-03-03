@@ -25,7 +25,7 @@ data = mj.MjData(model)
 
 sim_time = 15.0 #15 second simulation time
 start_time = time.time()
-actuator_id = mj.mj_name2id(model, mj.mjtObj.mjOBJ_ACTUATOR, "joint1actuator")
+actuator_id = mj.mj_name2id(model, mj.mjtObj.mjOBJ_ACTUATOR, "joint1motor")
 body3_id = mj.mj_name2id(model, mj.mjtObj.mjOBJ_BODY, "body3")
 body1_id = mj.mj_name2id(model, mj.mjtObj.mjOBJ_BODY, "body1")
 
