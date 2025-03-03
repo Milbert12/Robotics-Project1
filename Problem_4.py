@@ -35,6 +35,12 @@ b3_body_lin = np.array([])
 b3_spatial_ang = np.array([])
 b1_spatial_ang = np.array([])
 
+#set home position
+theta1 = pi/2
+theta2 = 0
+
+data.qpos[:] = np.array([theta1, theta2])
+
 while ((time.time() - start_time) < sim_time):
     step_start = time.time()
     
@@ -54,6 +60,7 @@ while ((time.time() - start_time) < sim_time):
     time_until_next_step = model.opt.timestep - (time.time() - step_start) #this limits the while loop to only run every 0.002seconds
     if time_until_next_step > 0:
       time.sleep(time_until_next_step)
+
 
 #**************4A****************
 fig, h_4a = plt.subplots()
