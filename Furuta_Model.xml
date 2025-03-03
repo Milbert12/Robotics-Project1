@@ -36,7 +36,7 @@
 		<frameangvel name="spatial1ang" objtype="site" objname="body1sensor"/>
 	</sensor>
 	<keyframe>
-	<key name="home" qpos="1.5707 0"/>
+	<key name="home" qpos="2.618 -1.346"/>
 	</keyframe>
 </mujoco>
 
