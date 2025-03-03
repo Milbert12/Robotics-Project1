@@ -5,11 +5,11 @@ import os
 from math import pi
 from spatialmath.base import skew, tr2angvec
 
-xml_path = "Furuta_Model.xml"
+xml_path = "Furuta_Model2.xml"
 dirname = os.path.dirname(__file__)
 abs_path = os.path.join(dirname, xml_path)
 
-model_name = 'Furuta_Model.txt'
+model_name = 'Furuta_Model2.txt'
 model_path = os.path.join(dirname, model_name)
 
 # Load the model and create simulation data

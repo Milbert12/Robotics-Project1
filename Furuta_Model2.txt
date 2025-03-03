@@ -63,12 +63,12 @@ OPTION
   o_solimp            0.9       0.95      0.001     0.5       2        
   o_friction          1         1         0.005     0.0001    0.0001   
 
-totalmass             1.2e+02 
+totalmass             40      
 
 STATISTIC
-  meaninertia         9.3     
-  meanmass            41      
-  meansize            0.48    
+  meaninertia         8.8     
+  meanmass            13      
+  meansize            0.68    
   extent              1.9     
   center              0       -0.29     0.68    
 
@@ -97,7 +97,7 @@ BODY 0:
   body_ipos             0         0         0        
   body_iquat            1         0         0         0        
   body_mass             0        
-  body_subtreemass      1.2e+02  
+  body_subtreemass      40       
   body_inertia          0         0         0        
   body_invweight0       0         0        
   body_gravcomp         0        
@@ -122,15 +122,15 @@ BODY 1:
   body_geomnum          1 
   body_geomadr          1 
   body_simple           0 
-  body_sameframe        0 
+  body_sameframe        1 
   body_pos              0         0         1.2      
   body_quat             0.71      0.71      0         0        
-  body_ipos             0        -0.6       0        
-  body_iquat            0.71     -0.71      0         0        
-  body_mass             85       
-  body_subtreemass      1.2e+02  
-  body_inertia          11        11        0.95     
-  body_invweight0       1.1e-34   0.037    
+  body_ipos             0         0         0        
+  body_iquat            1         0         0         0        
+  body_mass             1        
+  body_subtreemass      40       
+  body_inertia          0.01      0.01      0.01     
+  body_invweight0       0         0.041    
   body_gravcomp         0        
   body_margin           0        
   body_plugin           -1 
@@ -161,7 +161,7 @@ BODY 2:
   body_mass             25       
   body_subtreemass      39       
   body_inertia          1.4       1.4       0.13     
-  body_invweight0       0.0059    0.22     
+  body_invweight0       0.0066    0.23     
   body_gravcomp         0        
   body_margin           0        
   body_plugin           -1 
@@ -192,7 +192,7 @@ BODY 3:
   body_mass             14       
   body_subtreemass      14       
   body_inertia          0.77      0.77      0.04     
-  body_invweight0       0.019     0.22     
+  body_invweight0       0.019     0.23     
   body_gravcomp         0        
   body_margin           0        
   body_plugin           -1 
@@ -253,7 +253,7 @@ DOF 0:
   dof_frictionloss      0        
   dof_armature          0        
   dof_damping           0        
-  dof_invweight0        0.11     
+  dof_invweight0        0.12     
   dof_M0                15       
 
 DOF 1:
@@ -268,7 +268,7 @@ DOF 1:
   dof_frictionloss      0        
   dof_armature          0        
   dof_damping           0        
-  dof_invweight0        0.54     
+  dof_invweight0        0.57     
   dof_M0                3.2      
 
 
@@ -311,7 +311,7 @@ GEOM 1:
   geom_group            0 
   geom_priority         0 
   geom_plugin           -1 
-  geom_sameframe        2 
+  geom_sameframe        0 
   geom_solmix           1        
   geom_solref           0.02      1        
   geom_solimp           0.9       0.95      0.001     0.5       2        
@@ -429,7 +429,7 @@ LIGHT 0:
   light_active          1 
   light_pos             0         0         3        
   light_dir             0         0        -1        
-  light_poscom0         0         0.17      2.3      
+  light_poscom0         0         0.53      1.9      
   light_pos0            0         0         3        
   light_dir0            0         0        -1        
   light_attenuation     1         0         0        
@@ -462,7 +462,7 @@ ACTUATOR 0:
   actuator_actrange     0         0        
   actuator_gear         1         0         0         0         0         0        
   actuator_cranklength  0        
-  actuator_acc0         0.19     
+  actuator_acc0         0.22     
   actuator_length0      0        
   actuator_lengthrange  0         0        
   actuator_plugin       -1 
