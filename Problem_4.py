@@ -34,26 +34,28 @@ x_axis = np.array([])
 b3_body_lin = np.array([])
 b3_spatial_ang = np.array([])
 b1_spatial_ang = np.array([])
+with mujoco.viewer.launch_passive(model, data) as viewer:
 
-while ((time.time() - start_time) < sim_time):
-    step_start = time.time()
+    while ((time.time() - start_time) < sim_time):
+        step_start = time.time()
     
-    torque = -15*sgn(data.qvel[1].copy())
-    data.ctrl[actuator_id] = torque
+        torque = -15*sgn(data.qvel[1].copy())
+        data.ctrl[actuator_id] = torque
 
-    twists = np.array(np.reshape(data.sensordata.copy(), (-1, 6))).round(4)
+        twists = np.array(np.reshape(data.sensordata.copy(), (-1, 6))).round(4)
 
-    mj.mj_step(model, data)
+        mj.mj_step(model, data)
 
-    x_axis = np.append(x_axis, time.time() - start_time)
-    height = np.append(height, data.xpos[body3_id][2])
-    b3_body_lin = np.append(b3_body_lin, twists[0][0:3])
-    b3_spatial_ang = np.append(b3_spatial_ang, twists[1][3:6])
-    b1_spatial_ang = np.append(b1_spatial_ang, twists[4][3:6])
+        x_axis = np.append(x_axis, time.time() - start_time)
+        height = np.append(height, data.xpos[body3_id][2])
+        b3_body_lin = np.append(b3_body_lin, twists[0][0:3])
+        b3_spatial_ang = np.append(b3_spatial_ang, twists[1][3:6])
+        b1_spatial_ang = np.append(b1_spatial_ang, twists[4][3:6])
     
-    time_until_next_step = model.opt.timestep - (time.time() - step_start) #this limits the while loop to only run every 0.002seconds
-    if time_until_next_step > 0:
-      time.sleep(time_until_next_step)
+        time_until_next_step = model.opt.timestep - (time.time() - step_start) #this limits the while loop to only run every 0.002seconds
+        viewer.sync()
+        if time_until_next_step > 0:
+            time.sleep(time_until_next_step)
 
 
 #**************4A****************
