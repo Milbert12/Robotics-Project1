@@ -2,15 +2,15 @@ MuJoCo version 3.2.7
 model name     MuJoCo Model
 
 MEMORY
-  total           6.7 KB
+  total           6.8 KB
 
 SIZES
   nq                  2
   nv                  2
   nu                  1
   nbody               4
-  nbvh                4
-  nbvhstatic          4
+  nbvh                5
+  nbvhstatic          5
   njnt                2
   ngeom               4
   nsite               3
@@ -30,7 +30,7 @@ SIZES
   nconmax             -1
   nsensordata         30
   narena              13631488
-  nbuffer             12801
+  nbuffer             12865
 
 OPTION
   timestep            0.002   
@@ -66,9 +66,9 @@ OPTION
 totalmass             40      
 
 STATISTIC
-  meaninertia         8.8     
+  meaninertia         8.9     
   meanmass            13      
-  meansize            0.68    
+  meansize            0.67    
   extent              1.9     
   center              0       -0.29     0.68    
 
@@ -88,7 +88,7 @@ BODY 0:
   body_dofnum           0 
   body_dofadr           -1 
   body_treeid           -1 
-  body_geomnum          1 
+  body_geomnum          2 
   body_geomadr          0 
   body_simple           1 
   body_sameframe        1 
@@ -106,7 +106,7 @@ BODY 0:
   body_contype          1 
   body_conaffinity      1 
   body_bvhadr           0 
-  body_bvhnum           1 
+  body_bvhnum           3 
 
 BODY 1:
   name                  body1
@@ -119,8 +119,8 @@ BODY 1:
   body_dofnum           1 
   body_dofadr           0 
   body_treeid           0 
-  body_geomnum          1 
-  body_geomadr          1 
+  body_geomnum          0 
+  body_geomadr          -1 
   body_simple           0 
   body_sameframe        1 
   body_pos              0         0         1.2      
@@ -129,15 +129,15 @@ BODY 1:
   body_iquat            1         0         0         0        
   body_mass             1        
   body_subtreemass      40       
-  body_inertia          0.01      0.01      0.01     
+  body_inertia          0.1       0.1       0.1      
   body_invweight0       0         0.041    
   body_gravcomp         0        
   body_margin           0        
   body_plugin           -1 
-  body_contype          1 
-  body_conaffinity      1 
-  body_bvhadr           1 
-  body_bvhnum           1 
+  body_contype          0 
+  body_conaffinity      0 
+  body_bvhadr           -1 
+  body_bvhnum           0 
 
 BODY 2:
   name                  body2
@@ -167,7 +167,7 @@ BODY 2:
   body_plugin           -1 
   body_contype          1 
   body_conaffinity      1 
-  body_bvhadr           2 
+  body_bvhadr           3 
   body_bvhnum           1 
 
 BODY 3:
@@ -198,7 +198,7 @@ BODY 3:
   body_plugin           -1 
   body_contype          1 
   body_conaffinity      1 
-  body_bvhadr           3 
+  body_bvhadr           4 
   body_bvhnum           1 
 
 
@@ -305,7 +305,7 @@ GEOM 1:
   geom_contype          1 
   geom_conaffinity      1 
   geom_condim           3 
-  geom_bodyid           1 
+  geom_bodyid           0 
   geom_dataid           -1 
   geom_matid            -1 
   geom_group            0 
@@ -318,8 +318,8 @@ GEOM 1:
   geom_size             0.15      0.6       0        
   geom_aabb             0         0         0         0.15      0.15      0.6      
   geom_rbound           0.62     
-  geom_pos              0        -0.6       0        
-  geom_quat             0.71     -0.71      0         0        
+  geom_pos              0         0         0.6      
+  geom_quat             6.1e-17   1         0         0        
   geom_friction         1         0.005     0.0001   
   geom_margin           0        
   geom_gap              0        
@@ -462,7 +462,7 @@ ACTUATOR 0:
   actuator_actrange     0         0        
   actuator_gear         1         0         0         0         0         0        
   actuator_cranklength  0        
-  actuator_acc0         0.22     
+  actuator_acc0         0.21     
   actuator_length0      0        
   actuator_lengthrange  0         0        
   actuator_plugin       -1 
@@ -623,8 +623,9 @@ key_qpos0    2.6     -1.3
 
 BVH:
   id      depth   nodeid  child[0]  child[1]
-  0       0        0      -1        -1
-  1       0        1      -1        -1
-  2       0        2      -1        -1
-  3       0        3      -1        -1
+  0       0       -1       1         2
+  1       1        0      -1        -1
+  2       1        1      -1        -1
+  3       0        2      -1        -1
+  4       0        3      -1        -1
 
