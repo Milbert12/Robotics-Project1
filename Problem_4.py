@@ -120,13 +120,13 @@ N_b1_spatial_ang = np.linalg.norm(b1_spatial_ang, axis=1)
 fig, (linx_4c, liny_4c, linz_4c) = plt.subplots(3)
 
 linx_4c.plot(x_b1_spatial_ang, x_b3_spatial_ang)
-linx_4c.set(ylabel= 'Frame 3 x', title='End Effector vs Frame 1 Spatial Angular Velocity x y z')
+linx_4c.set(ylabel= 'Frame C x', title='End Effector vs Frame 1 Spatial Angular Velocity x y z')
 
 liny_4c.plot(y_b1_spatial_ang, y_b3_spatial_ang)
-liny_4c.set(ylabel= 'Frame 3 y')
+liny_4c.set(ylabel= 'Frame C y')
 
 linz_4c.plot(z_b1_spatial_ang, z_b3_spatial_ang)
-linz_4c.set(ylabel= 'Frame 3 z', xlabel='Frame 1 x, y, z')
+linz_4c.set(ylabel= 'Frame C z', xlabel='Frame 1 x, y, z')
 
 
 fig.savefig("Spatial Angular Velocity xyz.png")
@@ -134,7 +134,7 @@ fig.savefig("Spatial Angular Velocity xyz.png")
 fig, (linN_4c) = plt.subplots()
 linN_4c.plot(N_b1_spatial_ang, N_b3_spatial_ang)
 
-linN_4c.set(xlabel='Frame 1 Norm', ylabel='Frame 2 Norm',
+linN_4c.set(xlabel='Frame 1 Norm', ylabel='Frame C Norm',
        title='End Effector vs Frame 1 Spatial Angular Velocity')
 linN_4c.grid()
 
